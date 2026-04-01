@@ -93,4 +93,23 @@ echo "   'Hello' or 'Ping' in the chat!"
 echo ""
 echo "The routing instructions are sent automatically with each trigger."
 echo "No global files are modified. All data stays in \$TARGET_DIR."
+
+# Auto-Onboarding starten
+echo ""
+echo "🎯 Starte Onboarding automatisch in 3 Sekunden..."
+sleep 3
+"$OPENCLAW_BIN" trigger inject \
+    --session-key "agent:main:telegram:direct:$OPENCLAW_TELEGRAM_NR" \
+    --message "[SYSTEM-TRIGGER: PROAKTIV_ONBOARDING]
+Starte jetzt SOFORT das Onboarding. Stelle dem User folgende 5 Fragen nacheinander via Telegram:
+1. Welche Themen interessieren dich? (z.B. F1, KI, Fitness, Serien...)
+2. Welche Sportarten oder Events soll ich tracken? (oder: keine)
+3. Was willst du NIEMALS hören? (No-Go Topics, z.B. Crypto, Politik)
+4. Quiet Hours: Von wann bis wann soll ich still sein? (z.B. 22-07)
+5. Chill Mode: Ab wann nur noch Entertainment/Lifestyle? (z.B. ab 18 Uhr)
+Warte auf Antworten und speichere sie direkt in interest_graph.json und proaktiv_state.json." \
+    --deliver \
+    --reply-channel telegram
+echo "✅ Onboarding gestartet — schau in Telegram!"
+
 echo "==========================="
