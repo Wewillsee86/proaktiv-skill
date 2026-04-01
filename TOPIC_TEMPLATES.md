@@ -2,6 +2,12 @@
 ---
 
 ## [TRIGGER: GENERIC_TOPIC] — DYNAMIC PROFILER 2.2
+⚠️ PFLICHT bei News/Sport/Tech-Topics:
+
+1. ZUERST brave_search("{topic} aktuell {datum}") ausführen
+2. DANN Antwort bauen — nur mit echten, aktuellen Daten
+3. NIEMALS aus dem Gedächtnis antworten bei News-Topics
+4. Wenn Web-Suche fehlschlägt → ehrlich sagen statt erfinden
 *Activated automatically for ANY topic that has no specific template.*
 
 When you receive a trigger for a generic topic, follow these 4 phases:
