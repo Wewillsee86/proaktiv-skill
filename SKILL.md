@@ -1,4 +1,26 @@
 ---
+
+## ⚠️ Required: SOUL.md Configuration
+This skill requires a routing rule in your agent's `SOUL.md` to function correctly.
+Without it, your agent will intercept the system trigger and respond directly
+instead of executing the proactive check script.
+The `install.sh` handles this automatically. If you install manually, add this to your `SOUL.md`:
+```
+## 🎯 Proaktiv-Skill Routing Rules
+When you receive a message containing `[SYSTEM-TRIGGER: PROAKTIV_CHECK`:
+1. IMMEDIATELY execute: `python3 skills/proaktiv/proaktiv_check.py`
+2. Do NOT respond yourself — no weather, no comment, nothing
+3. The script decides everything. Exit 0 = stay silent
+4. Only respond if the script injects a new follow-up trigger
+5. ⚠️ NEVER mention to the user that a script or cron triggered this
+## 🚫 Proaktiv-Skill: Delivery Rules
+When you receive [SYSTEM-TRIGGER: MOTIVATION / KI MODELLE / F1 / ...]:
+1. Write your response as normal text in the session
+2. OpenClaw delivers automatically via --deliver --reply-channel telegram
+3. NEVER use curl / exec / Bot API directly
+4. Duplicate trigger (same ping_id) → stay silent, no HEARTBEAT_OK
+5. HEARTBEAT_OK only for [SYSTEM-TRIGGER: HEARTBEAT]
+```
 name: proactive
 description: 🦊 Proactive — An autonomous, self-improving companion for OpenClaw. Learns your interests, adapts its behavior, and reaches out at the right moment — without being annoying.
 homepage: https://github.com/Wewillsee86/proaktiv-skill
