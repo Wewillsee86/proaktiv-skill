@@ -70,8 +70,8 @@ echo "Setting up OpenClaw Cron job (every 30 min)..."
     --name "PROAKTIV-30min" \
     --cron "*/30 * * * *" \
     --tz "Europe/Berlin" \
-    --session "isolated" \
-    --no-deliver \
+    --session-key "agent:main:telegram:direct:$OPENCLAW_TELEGRAM_NR" \
+    --session-target "main" \
     --system-event "[SYSTEM-TRIGGER: PROAKTIV_CHECK | ambient_context=auto]" \
     2>/dev/null
 ) && echo "  PROAKTIV-30min cron registered" || \
