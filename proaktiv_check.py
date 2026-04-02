@@ -28,6 +28,10 @@ Changelog v1.0.10 (2026-03-30):
 import json, random, logging, sys, os, subprocess, time, uuid
 from datetime import datetime, date, timedelta
 import fcntl
+
+# SEARCH-PFLICHT: Wird mit jedem Topic-Trigger mitgeschickt
+SEARCH_REMINDER = "⚠️ SEARCH FIRST: Nutze brave_search oder tavily_search BEVOR du schreibst. Keine Fakten, Versionen, News aus internem Wissen — immer erst suchen."
+
 import importlib.util
 
 # .env laden (kein python-dotenv nötig)
@@ -433,6 +437,7 @@ def build_trigger(ping: dict, ping_id: str, hours_silent: float = 0.0) -> str:
 
     mtype = data.get("message_type", "dialog")
     parts.append(f"message_type={mtype}")
+    parts.append("search_required=yes")
 
     # Dialog-Modus → Kontext aus letztem Chat holen
     if mtype != "broadcast":

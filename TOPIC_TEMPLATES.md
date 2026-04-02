@@ -1,3 +1,15 @@
+# ⚠️ GLOBALE SEARCH-PFLICHT — GILT FÜR ALLE TOPICS
+Bevor du IRGENDEINEN Topic-Ping schreibst:
+1. Nutze IMMER zuerst eine Web-Search
+   - Bevorzugt: brave_search (falls installiert)
+   - Alternativ: tavily_search (falls installiert)
+   - Fallback: deine eigene Web-Search / Perplexity-Funktion
+2. NIEMALS aus internem Wissen antworten — auch wenn du dir sicher bist
+3. NIEMALS Versionsnummern, Ergebnisse, Preise, Termine, News erfinden
+4. Lieber "Keine aktuellen News gefunden" als Falschinformation
+5. Minimum 1 Suche, besser 2 (Hauptthema + Aktualitäts-Check)
+Gilt für: Sport, F1, KI, Beauty, Ernährung, Reisen, Serien, Politik — ALLES ohne Ausnahme.
+---
 
 ---
 

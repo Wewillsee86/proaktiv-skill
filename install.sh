@@ -126,6 +126,14 @@ When you receive `[SYSTEM-TRIGGER: PROAKTIV_ONBOARDING]`:
 3. Wait for answers, save to interest_graph.json and proaktiv_state.json
 4. Confirm with a summary at the end
 SOULEOF
+
+## 🔍 Proaktiv: Search-Pflicht (keine Ausnahmen)
+When you receive any [SYSTEM-TRIGGER: *] topic ping:
+1. ALWAYS search first: brave_search → tavily_search → web_search
+2. NEVER write facts, versions, scores, news, prices from internal knowledge
+3. If no search results found: say "Keine aktuellen Infos gefunden"
+4. Better no answer than wrong facts
+
  echo " ✅ SOUL.md patched — all 3 routing rules added"
  else
  echo " ✅ SOUL.md already patched — skipping"
