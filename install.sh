@@ -56,6 +56,13 @@ chmod +x "$TARGET_DIR/proaktiv_check.py"
 chmod +x "$TARGET_DIR/interest_evolve.py"
 chmod +x "$TARGET_DIR/feedback_update.py"
 
+# --- Tools Profile auf coding setzen (aktiviert exec auf gateway) ---
+echo ""
+echo "Configuring tools profile..."
+"$OPENCLAW_BIN" config set tools.profile coding 2>/dev/null && \
+ echo " ✅ tools.profile = coding (exec via gateway enabled)" || \
+ echo " ⚠️ Could not set tools.profile — run manually: openclaw config set tools.profile coding"
+
 # --- Set up OpenClaw Cron job ---
 echo ""
 echo "Setting up OpenClaw Cron job (every 30 min)..."
