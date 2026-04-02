@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # ============================================================
-# Proactive v1.0.46 — Installer
+# Proactive v1.0.47 — Installer
 # ============================================================
 
 set -e
 
-echo "Proactive v1.0.46 Installer"
+echo "Proactive v1.0.47 Installer"
 echo "==========================="
 
 # --- CONFIG ---
