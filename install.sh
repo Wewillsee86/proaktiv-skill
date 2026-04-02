@@ -43,7 +43,15 @@ echo ""
 read -p "  Enter your Telegram chat ID (number): " TELEGRAM_CHAT_ID
 
 if [ -z "$TELEGRAM_CHAT_ID" ]; then
-    echo "  SKIPPED — set OPENCLAW_TELEGRAM_NR manually in $TARGET_DIR/.env"
+    echo "  SKIPPED — creating .env template..."
+    cat > "$TARGET_DIR/.env" << 'ENVEOF'
+# Proactive Companion — Environment Config
+# Replace YOUR_CHAT_ID_HERE with your Telegram chat ID
+# Find it by messaging @userinfobot on Telegram
+OPENCLAW_TELEGRAM_NR=YOUR_CHAT_ID_HERE
+ENVEOF
+    chmod 600 "$TARGET_DIR/.env"
+    echo "  ✅ .env template created — edit $TARGET_DIR/.env and set your chat ID"
 else
     echo "OPENCLAW_TELEGRAM_NR=$TELEGRAM_CHAT_ID" > "$TARGET_DIR/.env"
     chmod 600 "$TARGET_DIR/.env"
