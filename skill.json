@@ -1,6 +1,6 @@
 {
   "name": "proactive-companion",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "author": "Kura (proaktiv-skill)",
   "description": "PROAKTIV v1.0.46 — An autonomous, self-improving buddy system for OpenClaw. Install ONLY via Telegram. Requires SOUL.md routing rules (install.sh patches automatically). Schedules autonomous interest-based pings, learns your topics, and delivers them directly to your Telegram chat.",
   "category": "lifestyle",
