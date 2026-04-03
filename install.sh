@@ -58,6 +58,24 @@ else
     echo "  Saved to $TARGET_DIR/.env"
 fi
 
+# --- STEP: Ping Budget ---
+echo ""
+echo " How many pings per day should Proactive send?"
+read -p " Weekdays (Mon-Fri) [default: 6]: " BUDGET_WEEKDAY
+read -p " Weekends (Sat-Sun) [default: 8]: " BUDGET_WEEKEND
+BUDGET_WEEKDAY="${BUDGET_WEEKDAY:-6}"
+BUDGET_WEEKEND="${BUDGET_WEEKEND:-8}"
+echo " Budget set: $BUDGET_WEEKDAY/day weekdays, $BUDGET_WEEKEND/day weekends"
+
+# --- STEP: Language ---
+echo ""
+echo " What language should Proactive use for pings?"
+echo " 'auto' = detect from your chat language (recommended)"
+echo " or enter: de / en / tr / fr / es / ..."
+read -p " Language [default: auto]: " PING_LANGUAGE
+PING_LANGUAGE="${PING_LANGUAGE:-auto}"
+echo " Language set to: $PING_LANGUAGE"
+
 # --- STEP 6: Make scripts executable ---
 echo "[6/6] Making scripts executable..."
 chmod +x "$TARGET_DIR/proaktiv_check.py"
@@ -70,6 +88,22 @@ echo "Configuring tools profile..."
 "$OPENCLAW_BIN" config set tools.profile coding 2>/dev/null && \
  echo " ✅ tools.profile = coding (exec via gateway enabled)" || \
  echo " ⚠️ Could not set tools.profile — run manually: openclaw config set tools.profile coding"
+
+# --- Patch interest_graph.json with user profile ---
+python3 - << PYEOF2
+import json, os
+path = "$TARGET_DIR/interest_graph.json"
+with open(path) as f:
+    data = json.load(f)
+data.setdefault('user_profile', {})
+data['user_profile']['language'] = "$PING_LANGUAGE"
+data['user_profile']['daily_budget_weekday'] = int("$BUDGET_WEEKDAY")
+data['user_profile']['daily_budget_weekend'] = int("$BUDGET_WEEKEND")
+data['user_profile']['ping_style'] = 'conversational_buddy_telegram'
+with open(path, 'w') as f:
+    json.dump(data, f, indent=2, ensure_ascii=False)
+print(" ✅ interest_graph.json — user profile saved")
+PYEOF2
 
 # --- Set up OpenClaw Cron job ---
 echo ""

@@ -1,3 +1,11 @@
+## 🌍 LANGUAGE RULE — ALWAYS FIRST
+ALWAYS write the ping in the language stored in `user_profile.language` in interest_graph.json:
+- `auto` → detect from recent chat history — use whatever language the user writes in
+- `de` → German always
+- `tr` → Turkish always
+- `en` → English always
+Never mix languages in one ping. Never default to English if the user writes German/Turkish.
+---
 # ⚠️ GLOBALE SEARCH-PFLICHT — GILT FÜR ALLE TOPICS
 Bevor du IRGENDEINEN Topic-Ping schreibst:
 1. Nutze IMMER zuerst eine Web-Search
