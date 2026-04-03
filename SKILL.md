@@ -141,7 +141,7 @@ social_knowledge.json  ← Tracked goals, commitments, no-go list
 ## Installation
 
 ```bash
-git clone https://github.com/Wewillsee86/proaktiv-skill.git
+git clone https://github.com/Wewillsee86/proactive-companion.git
 cd proaktiv-skill
 bash install.sh
 ```
@@ -150,8 +150,11 @@ The installer will:
 1. Copy all scripts to `/data/.openclaw/skills/proaktiv/`
 2. Copy template JSON files (empty state — no personal data)
 3. **Auto-detect your Telegram session** (dynamic UUID lookup)
-4. Set up the OpenClaw Cron job (every 30 minutes, Europe/Berlin)
-5. Fire the onboarding interview via Telegram
+4. Set `tools.profile = coding` (enables script execution via gateway — no node pairing needed)
+5. Patch your `SOUL.md` with all required routing rules automatically
+6. Set up the OpenClaw Cron job (every 30 minutes, Europe/Berlin)
+7. Ask for your ping budget (weekday / weekend) and preferred language
+8. Fire the onboarding interview via Telegram automatically
 
 ### Finding Your Telegram Chat ID
 Message [@userinfobot](https://t.me/userinfobot) on Telegram. It will reply with your numeric user ID. Enter that during install.
@@ -254,6 +257,11 @@ Open source — PRs, forks, and ideas are welcome. The codebase is readable and 
 
 ## Changelog
 
+- **v1.0.49**: Bugfix — user_reacted statt daniel_reacted (Skill jetzt für alle User). session_id Argparse-Fix. now_iso Duplikat entfernt. bare except durch spezifische Exceptions ersetzt.
+- **v1.0.48**: Feat — Globale Search-Pflicht für alle Topic-Pings (brave_search / tavily / web_search immer zuerst).
+- **v1.0.47**: Cleanup — proaktiv_check_fixed.py entfernt. Repo umbenannt zu proactive-companion.
+- **v1.0.46**: Critical Fix — install.sh patcht jetzt SOUL.md automatisch. PROAKTIV_CHECK Routing-Regel ergänzt. tools.profile=coding wird beim Install gesetzt.
+- **v1.0.45**: Fix — Onboarding startet automatisch nach Install ohne Rückfrage.
 - **v1.0.31**: Fix — `last_run_date` in `proaktiv_state.json` wird jetzt nach jedem Lauf korrekt aktualisiert.
 - **v1.0.30**: Fix — Install-Reihenfolge verifiziert (Auto-UUID-Lookup aus aktiver Telegram-Session). ClawHub: Telegram-Only-Warning DE/EN hinzugefügt.
 - **v1.0.29**: Production Release — Dynamic UUID lookup via `openclaw sessions --json`, `--session-key agent:main:telegram:direct:`, `--system-event` Cron, explizite Fehlermeldung, dual-language Install-UX.
