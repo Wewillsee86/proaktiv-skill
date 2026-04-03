@@ -33,6 +33,7 @@ cp "$REPO_DIR/templates/social_knowledge.json" "$TARGET_DIR/"
 # --- STEP 4: Copy topic templates ---
 echo "[4/6] Copying topic templates..."
 cp "$REPO_DIR/TOPIC_TEMPLATES.md" "$TARGET_DIR/"
+cp "$REPO_DIR/SOCIAL.md" "$TARGET_DIR/"
 
 # --- STEP 5: Prompt for Telegram Chat ID ---
 echo "[5/6] Telegram Chat ID..."
@@ -175,6 +176,10 @@ When you receive `[SYSTEM-TRIGGER: PROAKTIV_ONBOARDING]`:
 3. Wait for answers, save to interest_graph.json and proaktiv_state.json
 4. Confirm with a summary at the end
 SOULEOF
+
+## 🧠 Social Knowledge
+When updating social_knowledge.json or processing calendar/mail context:
+Read skills/proaktiv/SOCIAL.md first — it contains all detection and write rules.
 
 ## 🔍 Proaktiv: Search-Pflicht (keine Ausnahmen)
 When you receive any [SYSTEM-TRIGGER: *] topic ping:
