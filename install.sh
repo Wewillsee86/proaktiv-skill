@@ -175,8 +175,6 @@ When you receive `[SYSTEM-TRIGGER: PROAKTIV_ONBOARDING]`:
 2. Send the 5 onboarding questions one by one via Telegram
 3. Wait for answers, save to interest_graph.json and proaktiv_state.json
 4. Confirm with a summary at the end
-SOULEOF
-
 ## 🧠 Social Knowledge
 When updating social_knowledge.json or processing calendar/mail context:
 Read skills/proaktiv/SOCIAL.md first — it contains all detection and write rules.
@@ -187,6 +185,7 @@ When you receive any [SYSTEM-TRIGGER: *] topic ping:
 2. NEVER write facts, versions, scores, news, prices from internal knowledge
 3. If no search results found: say "Keine aktuellen Infos gefunden"
 4. Better no answer than wrong facts
+SOULEOF
 
  echo " ✅ SOUL.md patched — all 3 routing rules added"
  else
