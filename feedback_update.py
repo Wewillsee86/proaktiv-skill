@@ -37,7 +37,7 @@ def load_json(path, default):
     try:
         with open(path) as f:
             return json.load(f)
-    except:
+    except (FileNotFoundError, json.JSONDecodeError, KeyError, ValueError):
         return default.copy()
 
 def save_json(path, data):
@@ -77,7 +77,8 @@ def main():
     parser.add_argument("--ping_id", required=True)
     parser.add_argument("--message", required=True)
     parser.add_argument("--delay_minutes", type=float, default=0)
-    args = parser.parse_args()
+    parser.add_argument("--session_id", default=None, help="Active session ID for routing")
+args = parser.parse_args()
 
     # ─── NEU v1.0.10: Session-ID Tracking ────────────────────────────────
     active_session = getattr(args, 'session_id', None)
@@ -208,7 +209,6 @@ def main():
 
     # NEU v3: temp_no_go Logik
     temp_no_go = graph.setdefault("temp_no_go", {})
-    now_iso = datetime.now(timezone.utc).isoformat()
 
     if delta > 0:
         # Positive Reaktion → sofort aus Cooldown befreien

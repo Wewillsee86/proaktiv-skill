@@ -246,7 +246,7 @@ def apply_passive_decay(graph: dict, history: dict):
         except Exception:
             continue
 
-        if not (ts > cutoff and ping.get("delivered") and not ping.get("daniel_reacted")):
+        if not (ts > cutoff and ping.get("delivered") and not ping.get("user_reacted")):
             continue
 
         topic = ping.get("topic", "")
@@ -302,7 +302,7 @@ def apply_dormant_automatik(graph: dict, history: dict):
         if topic not in topic_stats:
             topic_stats[topic] = {"consec_ignored": 0, "had_reaction": False}
 
-        if ping.get("daniel_reacted"):
+        if ping.get("user_reacted"):
             topic_stats[topic]["had_reaction"] = True
         elif ping.get("delivered") and not topic_stats[topic]["had_reaction"]:
             # Arbeitszeit-Schutz: Ping in Arbeitszeit → kein Ignore-Zähler
@@ -781,7 +781,7 @@ def main():
         "topic": ping["topic"],
         "urgency": ping["urgency"],
         "delivered": False,
-        "daniel_reacted": False,
+        "user_reacted": False,
         "reaction_type": None,
         "reaction_delta": None,
     })

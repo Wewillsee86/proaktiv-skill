@@ -21,7 +21,7 @@ def load_json(path, default):
     try:
         with open(path) as f:
             return json.load(f)
-    except:
+    except (FileNotFoundError, json.JSONDecodeError, KeyError, ValueError):
         return default.copy()
 
 def save_json(path, data):
